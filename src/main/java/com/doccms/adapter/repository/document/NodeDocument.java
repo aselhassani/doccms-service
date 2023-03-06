@@ -1,6 +1,7 @@
 package com.doccms.adapter.repository.document;
 
 import java.time.Instant;
+import java.util.List;
 import java.util.Set;
 
 import lombok.Builder;
@@ -9,20 +10,23 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
 @Builder
-@Document(collection = "item")
+@Document(collection = "node")
 public record NodeDocument(
     @Id
     @MongoId
-    String id,
+    Long id,
+    String schemaId,
+    String schemaName,
     String parentId,
-    String typeName,
     String title,
     String description,
     String owner,
     Set<String> contributors,
     String language,
     Instant createdAt,
-    Instant updatedAt
+    Instant updatedAt,
+    List<AttributeDocument> attributes
 
 ) {
+    private static final String NODE_SEQUENCE = "schema_sequence";
 }

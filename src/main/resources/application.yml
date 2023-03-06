@@ -1,9 +1,4 @@
 spring:
-  datasource:
-    username: postgres
-    url: jdbc:postgresql://localhost:5433/demo-service
-    password: postgres
-  jpa:
-    show-sql: true
-    generate-ddl: true
-    database: postgresql
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/doccms_db

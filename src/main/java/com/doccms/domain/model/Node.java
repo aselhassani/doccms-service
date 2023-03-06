@@ -4,7 +4,9 @@ import java.time.Instant;
 import java.util.Map;
 import java.util.Set;
 
+import lombok.Builder;
 
+@Builder
 public record Node(
     String id,
     String parentId,

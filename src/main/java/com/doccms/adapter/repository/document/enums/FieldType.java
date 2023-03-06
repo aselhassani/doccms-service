@@ -1,4 +1,4 @@
-package com.doccms.domain.model.enums;
+package com.doccms.adapter.repository.document.enums;
 
 
 public enum FieldType {

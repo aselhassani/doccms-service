@@ -1,5 +1,4 @@
-package com.doccms.domain.model.enums;
-
+package com.doccms.adapter.ws.dto.enums;
 
 public enum FieldType {
     BOOLEAN,
