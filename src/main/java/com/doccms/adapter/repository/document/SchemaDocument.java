@@ -6,6 +6,7 @@ import java.util.Optional;
 
 import com.doccms.domain.model.Schema;
 import lombok.Builder;
+import lombok.With;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
@@ -15,6 +16,7 @@ import org.springframework.data.mongodb.core.mapping.MongoId;
 public record SchemaDocument(
     @Id
     @MongoId
+    @With
     Long id,
     String name,
     String description,

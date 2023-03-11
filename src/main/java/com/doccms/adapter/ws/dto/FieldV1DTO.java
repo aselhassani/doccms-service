@@ -23,7 +23,7 @@ public record FieldV1DTO(
                          .type(FieldType.valueOf(field.type().name()))
                          .mode(FieldMode.valueOf(field.mode().name()))
                          .defaultValue(field.defaultValue())
-                         .constraints(Optional.of(field.constraints())
+                         .constraints(Optional.ofNullable(field.constraints())
                                               .map(ConstraintsV1DTO::fromDomain)
                                               .orElse(null))
                          .build();

@@ -13,11 +13,11 @@ public record SchemaRequestV1DTO(
     List<FieldV1DTO> fields
 ) {
 
-    public static SchemaRequestV1DTO fromDomain(Schema nodeType) {
+    public static SchemaRequestV1DTO fromDomain(Schema domain) {
         return SchemaRequestV1DTO.builder()
-                                 .name(nodeType.name())
-                                 .description(nodeType.description())
-                                 .fields(nodeType.fields().stream().map(FieldV1DTO::fromDomain).toList())
+                                 .name(domain.name())
+                                 .description(domain.description())
+                                 .fields(domain.fields().stream().map(FieldV1DTO::fromDomain).toList())
                                  .build();
     }
 

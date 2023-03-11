@@ -1,10 +1,6 @@
 version: "3.0"
 services:
   db:
-    image: postgres:latest
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: demo-service
+    image: mongo:latest
     ports:
-      - "5433:5432"
+      - "27018:27017"

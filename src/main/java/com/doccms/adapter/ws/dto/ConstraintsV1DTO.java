@@ -23,10 +23,18 @@ public record ConstraintsV1DTO(
         return ConstraintsV1DTO.builder()
                                .nullable(domain.nullable())
                                .pattern(domain.pattern())
-                               .dateConstraint(DateConstraintV1DTO.fromDomain(domain.dateConstraint()))
-                               .numberConstraint(NumberConstraintV1DTO.fromDomain(domain.numberConstraint()))
-                               .listConstraint(ListConstraintV1DTO.fromDomain(domain.listConstraint()))
-                               .sizeConstraint(SizeConstraintV1DTO.fromDomain(domain.sizeConstraint()))
+                               .dateConstraint(Optional.ofNullable(domain.dateConstraint())
+                                                       .map(DateConstraintV1DTO::fromDomain)
+                                                       .orElse(null))
+                               .numberConstraint(Optional.ofNullable(domain.numberConstraint())
+                                                         .map(NumberConstraintV1DTO::fromDomain)
+                                                         .orElse(null))
+                               .listConstraint(Optional.ofNullable(domain.listConstraint())
+                                                       .map(ListConstraintV1DTO::fromDomain)
+                                                       .orElse(null))
+                               .sizeConstraint(Optional.ofNullable(domain.sizeConstraint())
+                                                       .map(SizeConstraintV1DTO::fromDomain)
+                                                       .orElse(null))
                                .build();
     }
 
@@ -44,7 +52,8 @@ public record ConstraintsV1DTO(
                               Optional.ofNullable(this.sizeConstraint()).map(SizeConstraintV1DTO::toDomain)
                                       .orElse(null))
                           .listConstraint(
-                              Optional.ofNullable(this.listConstraint).map(ListConstraintV1DTO::toDomain).orElse(null))
+                              Optional.ofNullable(this.listConstraint()).map(ListConstraintV1DTO::toDomain)
+                                      .orElse(null))
                           .build();
     }
 }
