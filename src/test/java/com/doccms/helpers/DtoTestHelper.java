@@ -10,23 +10,23 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Random;
 
-import com.doccms.adapter.ws.dto.ConstraintsV1DTO;
-import com.doccms.adapter.ws.dto.DateConstraintV1DTO;
-import com.doccms.adapter.ws.dto.FieldV1DTO;
-import com.doccms.adapter.ws.dto.ListConstraintV1DTO;
-import com.doccms.adapter.ws.dto.NumberConstraintV1DTO;
-import com.doccms.adapter.ws.dto.SchemaRequestV1DTO;
-import com.doccms.adapter.ws.dto.SizeConstraintV1DTO;
-import com.doccms.adapter.ws.dto.enums.FieldMode;
-import com.doccms.adapter.ws.dto.enums.FieldType;
+import com.doccms.adapter.ws.admin.dto.ConstraintsV1DTO;
+import com.doccms.adapter.ws.admin.dto.DateConstraintV1DTO;
+import com.doccms.adapter.ws.admin.dto.FieldV1DTO;
+import com.doccms.adapter.ws.admin.dto.ListConstraintV1DTO;
+import com.doccms.adapter.ws.admin.dto.NumberConstraintV1DTO;
+import com.doccms.adapter.ws.admin.dto.SchemaRequestV1DTO;
+import com.doccms.adapter.ws.admin.dto.SizeConstraintV1DTO;
+import com.doccms.adapter.ws.admin.dto.enums.FieldMode;
+import com.doccms.adapter.ws.admin.dto.enums.FieldType;
 
 public class DtoTestHelper {
 
     private static final Random random = new SecureRandom();
 
-    public static SchemaRequestV1DTO getRandomSchemaRequestV1DTO() {
+    public static SchemaRequestV1DTO getRandomSchemaRequestV1DTO(String name) {
         return SchemaRequestV1DTO.builder()
-                                 .name(getRandomId("sch"))
+                                 .name(name)
                                  .description(getRandomText(20))
                                  .fields(List.of(getRandomFieldV1DTO()))
                                  .build();

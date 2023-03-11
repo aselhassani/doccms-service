@@ -11,24 +11,28 @@ import java.util.Random;
 
 import com.doccms.adapter.repository.document.FieldDocument;
 import com.doccms.adapter.repository.document.SchemaDocument;
-import com.doccms.adapter.repository.document.contraint.ConstraintsDocument;
-import com.doccms.adapter.repository.document.contraint.DateConstraintDocument;
-import com.doccms.adapter.repository.document.contraint.ListConstraintDocument;
-import com.doccms.adapter.repository.document.contraint.NumberConstraintDocument;
-import com.doccms.adapter.repository.document.contraint.SizeConstraintDocument;
+import com.doccms.adapter.repository.document.constraint.ConstraintsDocument;
+import com.doccms.adapter.repository.document.constraint.DateConstraintDocument;
+import com.doccms.adapter.repository.document.constraint.ListConstraintDocument;
+import com.doccms.adapter.repository.document.constraint.NumberConstraintDocument;
+import com.doccms.adapter.repository.document.constraint.SizeConstraintDocument;
 import com.doccms.adapter.repository.document.enums.FieldMode;
 import com.doccms.adapter.repository.document.enums.FieldType;
 
 public class DocumentTestHelper {
     private static final Random random = new SecureRandom();
 
-    public static SchemaDocument getRandomSchemaDocument() {
+    public static SchemaDocument getRandomSchemaDocument(String name) {
         return SchemaDocument.builder()
                              .id(getRandomId())
-                             .name(getRandomId("sch"))
+                             .name(name)
                              .description(getRandomText(20))
                              .fields(List.of(getRandomFieldDocument()))
                              .build();
+    }
+
+    public static SchemaDocument getRandomSchemaDocument() {
+        return getRandomSchemaDocument(getRandomId("sch"));
     }
 
     private static FieldDocument getRandomFieldDocument() {

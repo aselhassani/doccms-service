@@ -23,7 +23,7 @@ import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.data.mongodb.core.query.UpdateDefinition;
 
 @ExtendWith(MockitoExtension.class)
-public class SequenceGeneratorTest {
+class SequenceGeneratorTest {
     @Mock
     MongoOperations mongoOperations;
     @InjectMocks
