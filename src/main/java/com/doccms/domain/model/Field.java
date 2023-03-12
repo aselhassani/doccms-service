@@ -7,11 +7,12 @@ import lombok.Builder;
 
 @Builder
 public record Field(
-    String name,
-    FieldType type,
-    FieldMode mode,
-    Object defaultValue,
-    Constraints constraints
+        String name,
+        FieldType type,
+        FieldMode mode,
+        Object defaultValue,
+        Constraints constraints
 ) {
+
 
 }

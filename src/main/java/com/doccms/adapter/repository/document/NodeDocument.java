@@ -1,7 +1,7 @@
 package com.doccms.adapter.repository.document;
 
 import java.time.Instant;
-import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import lombok.Builder;
@@ -25,7 +25,7 @@ public record NodeDocument(
     String language,
     Instant createdAt,
     Instant updatedAt,
-    List<AttributeDocument> attributes
+    Map<String, Object> properties
 
 ) {
     private static final String NODE_SEQUENCE = "schema_sequence";

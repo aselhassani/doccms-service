@@ -1,4 +1,4 @@
-package com.doccms.adapter.ws.admin.exception;
+package com.doccms.adapter.ws.admin.v1.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
