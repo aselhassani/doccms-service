@@ -27,7 +27,6 @@ public record SchemaDocument(
 
     public static SchemaDocument fromDomain(Schema domain) {
         return SchemaDocument.builder()
-                             .id(domain.id())
                              .name(domain.name())
                              .description(domain.description())
                              .fields(Optional.of(domain.fields()).orElse(Collections.emptyList())
@@ -40,7 +39,6 @@ public record SchemaDocument(
 
     public Schema toDomain() {
         return Schema.builder()
-                     .id(this.id())
                      .name(this.name())
                      .description(this.description())
                      .fields(Optional.of(this.fields()).orElse(Collections.emptyList())

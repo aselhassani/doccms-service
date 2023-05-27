@@ -6,10 +6,10 @@ import lombok.Builder;
 
 @Builder
 public record Schema(
-    Long id,
-    String name,
-    String description,
-    List<Field> fields
+        String name,
+        String label,
+        String description,
+        List<Field> fields
 ) {
 
 

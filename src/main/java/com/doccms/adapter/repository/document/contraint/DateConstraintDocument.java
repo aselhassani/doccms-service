@@ -2,7 +2,7 @@ package com.doccms.adapter.repository.document.contraint;
 
 import java.time.LocalDate;
 
-import com.doccms.domain.model.contraint.DateConstraint;
+import com.doccms.domain.model.constraint.DateConstraint;
 import lombok.Builder;
 
 

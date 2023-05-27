@@ -1,4 +1,4 @@
-package com.doccms.adapter.ws.admin.v1.dto;
+package com.doccms.adapter.ws.admin.dto;
 
 import com.doccms.domain.model.constraint.SizeConstraint;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -6,12 +6,12 @@ import lombok.Builder;
 
 @Builder
 @Schema(name = "SizeConstraintV1DTO", description = "Data size constraint DTO")
-public record SizeConstraintV1DTO(
+public record SizeConstraintDTO(
         Integer minSize,
         Integer maxSize
 ) {
-    public static SizeConstraintV1DTO fromDomain(SizeConstraint domain) {
-        return SizeConstraintV1DTO.builder()
+    public static SizeConstraintDTO fromDomain(SizeConstraint domain) {
+        return SizeConstraintDTO.builder()
                 .minSize(domain.minSize())
                 .maxSize(domain.maxSize())
                 .build();

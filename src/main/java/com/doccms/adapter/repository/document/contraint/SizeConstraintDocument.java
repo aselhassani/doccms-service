@@ -1,6 +1,6 @@
 package com.doccms.adapter.repository.document.contraint;
 
-import com.doccms.domain.model.contraint.SizeConstraint;
+import com.doccms.domain.model.constraint.SizeConstraint;
 import lombok.Builder;
 
 @Builder

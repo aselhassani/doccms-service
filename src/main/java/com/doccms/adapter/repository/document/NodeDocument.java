@@ -15,8 +15,7 @@ public record NodeDocument(
     @Id
     @MongoId
     Long id,
-    String schemaId,
-    String schemaName,
+    String schema,
     String parentId,
     String title,
     String description,

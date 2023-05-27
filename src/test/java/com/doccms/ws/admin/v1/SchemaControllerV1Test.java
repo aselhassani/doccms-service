@@ -1,12 +1,12 @@
 package com.doccms.ws.admin.v1;
 
-import com.doccms.adapter.ws.admin.v1.SchemaControllerV1;
-import com.doccms.adapter.ws.admin.v1.dto.FieldV1DTO;
-import com.doccms.adapter.ws.admin.v1.dto.SchemaRQV1DTO;
-import com.doccms.adapter.ws.admin.v1.exception.InvalidConstraintsException;
-import com.doccms.adapter.ws.admin.v1.exception.InvalidFieldValueException;
-import com.doccms.adapter.ws.admin.v1.exception.SchemaNameExistsException;
-import com.doccms.adapter.ws.admin.v1.exception.SchemaValidator;
+import com.doccms.adapter.ws.admin.SchemaController;
+import com.doccms.adapter.ws.admin.dto.FieldDTO;
+import com.doccms.adapter.ws.admin.dto.SchemaDTO;
+import com.doccms.adapter.ws.admin.exception.InvalidConstraintsException;
+import com.doccms.adapter.ws.admin.exception.InvalidFieldValueException;
+import com.doccms.adapter.ws.admin.exception.SchemaNameExistsException;
+import com.doccms.adapter.ws.admin.exception.SchemaValidator;
 import com.doccms.domain.model.Schema;
 import com.doccms.domain.service.SchemaService;
 import com.doccms.helpers.DomainTestHelper;
@@ -33,7 +33,7 @@ import static org.mockito.Mockito.when;
 class SchemaControllerV1Test {
 
     @InjectMocks
-    private SchemaControllerV1 underTest;
+    private SchemaController underTest;
 
     @Mock
     private SchemaService schemaService;
@@ -43,8 +43,8 @@ class SchemaControllerV1Test {
 
     private Schema schema;
 
-    private SchemaRQV1DTO schemaRQV1DTO;
-    private FieldV1DTO fieldV1DTO;
+    private SchemaDTO schemaRQV1DTO;
+    private FieldDTO fieldV1DTO;
 
     @BeforeEach
     void setup() {

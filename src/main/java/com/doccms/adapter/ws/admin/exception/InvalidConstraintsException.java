@@ -1,8 +1,8 @@
-package com.doccms.adapter.ws.admin.v1.exception;
+package com.doccms.adapter.ws.admin.exception;
 
-import com.doccms.adapter.ws.admin.v1.dto.ConstraintsV1DTO;
-import com.doccms.adapter.ws.admin.v1.dto.enums.FieldMode;
-import com.doccms.adapter.ws.admin.v1.dto.enums.FieldType;
+import com.doccms.adapter.ws.admin.dto.ConstraintsDTO;
+import com.doccms.adapter.ws.admin.dto.enums.FieldMode;
+import com.doccms.adapter.ws.admin.dto.enums.FieldType;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
@@ -10,7 +10,7 @@ public class InvalidConstraintsException extends RuntimeException {
 
     private FieldType type;
     private FieldMode mode;
-    private ConstraintsV1DTO constraints;
+    private ConstraintsDTO constraints;
 
     @Override
     public String getMessage() {

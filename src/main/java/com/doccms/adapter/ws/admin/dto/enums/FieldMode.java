@@ -1,4 +1,4 @@
-package com.doccms.adapter.ws.admin.v1.dto.enums;
+package com.doccms.adapter.ws.admin.dto.enums;
 
 public enum FieldMode {
     SINGLE,

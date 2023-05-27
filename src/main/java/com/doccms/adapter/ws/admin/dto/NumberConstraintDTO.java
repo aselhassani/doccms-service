@@ -1,4 +1,4 @@
-package com.doccms.adapter.ws.admin.v1.dto;
+package com.doccms.adapter.ws.admin.dto;
 
 import com.doccms.domain.model.constraint.NumberConstraint;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -6,12 +6,12 @@ import lombok.Builder;
 
 @Builder
 @Schema(name = "NumberConstraintV1DTO", description = "Number constraint DTO")
-public record NumberConstraintV1DTO(
+public record NumberConstraintDTO(
         Double minValue,
         Double maxValue
 ) {
-    public static NumberConstraintV1DTO fromDomain(NumberConstraint domain) {
-        return NumberConstraintV1DTO.builder()
+    public static NumberConstraintDTO fromDomain(NumberConstraint domain) {
+        return NumberConstraintDTO.builder()
                 .minValue(domain.minValue())
                 .maxValue(domain.maxValue())
                 .build();

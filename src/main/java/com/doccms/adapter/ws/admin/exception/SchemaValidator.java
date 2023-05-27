@@ -1,8 +1,8 @@
-package com.doccms.adapter.ws.admin.v1.exception;
+package com.doccms.adapter.ws.admin.exception;
 
-import com.doccms.adapter.ws.admin.v1.dto.ConstraintsV1DTO;
-import com.doccms.adapter.ws.admin.v1.dto.enums.FieldMode;
-import com.doccms.adapter.ws.admin.v1.dto.enums.FieldType;
+import com.doccms.adapter.ws.admin.dto.enums.FieldMode;
+import com.doccms.adapter.ws.admin.dto.ConstraintsDTO;
+import com.doccms.adapter.ws.admin.dto.enums.FieldType;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -48,7 +48,7 @@ public class SchemaValidator {
         };
     }
 
-    public boolean validateConstraints(ConstraintsV1DTO constraints, FieldType type, FieldMode mode) {
+    public boolean validateConstraints(ConstraintsDTO constraints, FieldType type, FieldMode mode) {
         return false;
     }
 

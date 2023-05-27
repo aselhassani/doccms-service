@@ -2,7 +2,7 @@ package com.doccms.adapter.repository.document.contraint;
 
 import java.util.Optional;
 
-import com.doccms.domain.model.contraint.Constraints;
+import com.doccms.domain.model.constraint.Constraints;
 import lombok.Builder;
 
 @Builder

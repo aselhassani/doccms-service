@@ -1,4 +1,4 @@
-package com.doccms.adapter.ws.admin.v1.dto;
+package com.doccms.adapter.ws.admin.dto;
 
 
 import com.doccms.domain.model.constraint.Constraints;
@@ -11,37 +11,37 @@ import java.util.Optional;
 
 @Builder
 @Schema(name = "ConstraintsV1DTO", description = "Constraints DTO")
-public record ConstraintsV1DTO(
+public record ConstraintsDTO(
         @NotNull
         @With
         Boolean nullable,
         @With
         String pattern,
         @With
-        DateConstraintV1DTO dateConstraint,
+        DateConstraintDTO dateConstraint,
         @With
-        NumberConstraintV1DTO numberConstraint,
+        NumberConstraintDTO numberConstraint,
         @With
-        SizeConstraintV1DTO sizeConstraint,
+        SizeConstraintDTO sizeConstraint,
         @With
-        ListConstraintV1DTO listConstraint
+        ListConstraintDTO listConstraint
 ) {
 
-    public static ConstraintsV1DTO fromDomain(Constraints domain) {
-        return ConstraintsV1DTO.builder()
+    public static ConstraintsDTO fromDomain(Constraints domain) {
+        return ConstraintsDTO.builder()
                 .nullable(domain.nullable())
                 .pattern(domain.pattern())
                 .dateConstraint(Optional.ofNullable(domain.dateConstraint())
-                        .map(DateConstraintV1DTO::fromDomain)
+                        .map(DateConstraintDTO::fromDomain)
                         .orElse(null))
                 .numberConstraint(Optional.ofNullable(domain.numberConstraint())
-                        .map(NumberConstraintV1DTO::fromDomain)
+                        .map(NumberConstraintDTO::fromDomain)
                         .orElse(null))
                 .listConstraint(Optional.ofNullable(domain.listConstraint())
-                        .map(ListConstraintV1DTO::fromDomain)
+                        .map(ListConstraintDTO::fromDomain)
                         .orElse(null))
                 .sizeConstraint(Optional.ofNullable(domain.sizeConstraint())
-                        .map(SizeConstraintV1DTO::fromDomain)
+                        .map(SizeConstraintDTO::fromDomain)
                         .orElse(null))
                 .build();
     }
@@ -51,16 +51,16 @@ public record ConstraintsV1DTO(
                 .nullable(this.nullable())
                 .pattern(this.pattern())
                 .dateConstraint(
-                        Optional.ofNullable(this.dateConstraint()).map(DateConstraintV1DTO::toDomain)
+                        Optional.ofNullable(this.dateConstraint()).map(DateConstraintDTO::toDomain)
                                 .orElse(null))
                 .numberConstraint(
-                        Optional.ofNullable(this.numberConstraint()).map(NumberConstraintV1DTO::toDomain)
+                        Optional.ofNullable(this.numberConstraint()).map(NumberConstraintDTO::toDomain)
                                 .orElse(null))
                 .sizeConstraint(
-                        Optional.ofNullable(this.sizeConstraint()).map(SizeConstraintV1DTO::toDomain)
+                        Optional.ofNullable(this.sizeConstraint()).map(SizeConstraintDTO::toDomain)
                                 .orElse(null))
                 .listConstraint(
-                        Optional.ofNullable(this.listConstraint()).map(ListConstraintV1DTO::toDomain)
+                        Optional.ofNullable(this.listConstraint()).map(ListConstraintDTO::toDomain)
                                 .orElse(null))
                 .build();
     }

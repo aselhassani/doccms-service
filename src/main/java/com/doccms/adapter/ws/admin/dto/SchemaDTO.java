@@ -1,4 +1,4 @@
-package com.doccms.adapter.ws.admin.v1.dto;
+package com.doccms.adapter.ws.admin.dto;
 
 import com.doccms.domain.model.Schema;
 import jakarta.validation.Valid;
@@ -10,7 +10,7 @@ import java.util.List;
 
 @Builder
 @io.swagger.v3.oas.annotations.media.Schema(name = "SchemaRQV1DTO", description = "Schema request DTO")
-public record SchemaRQV1DTO(
+public record SchemaDTO(
         @NotBlank
         String name,
         @NotBlank
@@ -18,14 +18,14 @@ public record SchemaRQV1DTO(
 
         @Valid
         @NotEmpty
-        List<FieldV1DTO> fields
+        List<FieldDTO> fields
 ) {
 
-    public static SchemaRQV1DTO fromDomain(Schema domain) {
-        return SchemaRQV1DTO.builder()
+    public static SchemaDTO fromDomain(Schema domain) {
+        return SchemaDTO.builder()
                 .name(domain.name())
                 .description(domain.description())
-                .fields(domain.fields().stream().map(FieldV1DTO::fromDomain).toList())
+                .fields(domain.fields().stream().map(FieldDTO::fromDomain).toList())
                 .build();
     }
 
@@ -33,7 +33,7 @@ public record SchemaRQV1DTO(
         return Schema.builder()
                 .name(this.name())
                 .description(this.description())
-                .fields(this.fields().stream().map(FieldV1DTO::toDomain).toList())
+                .fields(this.fields().stream().map(FieldDTO::toDomain).toList())
                 .build();
     }
 

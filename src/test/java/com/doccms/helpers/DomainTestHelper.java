@@ -6,11 +6,13 @@ import static com.doccms.helpers.TestHelper.getRandomId;
 import static com.doccms.helpers.TestHelper.getRandomText;
 
 import java.security.SecureRandom;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Random;
 
 import com.doccms.domain.model.Field;
+import com.doccms.domain.model.Node;
 import com.doccms.domain.model.Schema;
 import com.doccms.domain.model.constraint.Constraints;
 import com.doccms.domain.model.constraint.DateConstraint;
@@ -30,7 +32,6 @@ public class DomainTestHelper {
 
     public static Schema getRandomSchema(String name) {
         return Schema.builder()
-                     .id(getRandomId())
                      .name(name)
                      .description(getRandomText(20))
                      .fields(List.of(getRandomField()))
@@ -79,4 +80,14 @@ public class DomainTestHelper {
                           .pattern(getRandomText(3))
                           .build();
     }
+    public static Node getRandomNode() {
+        return Node.builder()
+                .schemaName(getRandomId("sch"))
+                .id((new Random()).nextLong())
+                .owner("admin")
+                .title("Test title")
+                .createdAt(Instant.now())
+                .build();
+    }
+
 }

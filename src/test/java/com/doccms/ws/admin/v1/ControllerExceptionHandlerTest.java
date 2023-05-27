@@ -1,6 +1,6 @@
 package com.doccms.ws.admin.v1;
 
-import com.doccms.adapter.ws.admin.v1.exception.AdminControllerExceptionHandler;
+import com.doccms.adapter.ws.admin.exception.AdminControllerExceptionHandler;
 import io.github.classgraph.ClassGraph;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.annotation.AnnotationUtils;

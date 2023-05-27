@@ -1,9 +1,9 @@
 package com.doccms.helpers;
 
 
-import com.doccms.adapter.ws.admin.v1.dto.*;
-import com.doccms.adapter.ws.admin.v1.dto.enums.FieldMode;
-import com.doccms.adapter.ws.admin.v1.dto.enums.FieldType;
+import com.doccms.adapter.ws.admin.dto.*;
+import com.doccms.adapter.ws.admin.dto.enums.FieldMode;
+import com.doccms.adapter.ws.admin.dto.enums.FieldType;
 
 import java.security.SecureRandom;
 import java.time.LocalDate;
@@ -17,15 +17,15 @@ public class DtoTestHelper {
 
     private static final Random random = new SecureRandom();
 
-    public static SchemaRQV1DTO getRandomSchemaRequestV1DTO(String name, FieldV1DTO fieldV1DTO) {
-        return SchemaRQV1DTO.builder()
+    public static SchemaDTO getRandomSchemaRequestV1DTO(String name, FieldDTO fieldV1DTO) {
+        return SchemaDTO.builder()
                 .name(name)
                 .description(getRandomText(20))
                 .fields(List.of(fieldV1DTO))
                 .build();
     }
 
-    public static FieldV1DTO getRandomFieldV1DTO() {
+    public static FieldDTO getRandomFieldV1DTO() {
         return getRandomFieldV1DTO(getRandomFieldType(), getRandomFieldMode());
     }
 
@@ -37,10 +37,10 @@ public class DtoTestHelper {
         return TestHelper.getRandomClass(FieldMode.class);
     }
 
-    private static FieldV1DTO getRandomFieldV1DTO(FieldType type, FieldMode mode) {
+    private static FieldDTO getRandomFieldV1DTO(FieldType type, FieldMode mode) {
         var constraint = getRandomConstraintV1DTO(type);
         var defaultValue = getRandomValue(type);
-        return FieldV1DTO.builder()
+        return FieldDTO.builder()
                 .name("f" + getRandomId())
                 .type(type)
                 .mode(mode)
@@ -61,8 +61,8 @@ public class DtoTestHelper {
         };
     }
 
-    private static ConstraintsV1DTO getRandomConstraintV1DTO(FieldType type) {
-        var constraints = ConstraintsV1DTO.builder()
+    private static ConstraintsDTO getRandomConstraintV1DTO(FieldType type) {
+        var constraints = ConstraintsDTO.builder()
                 .nullable(random.nextBoolean())
                 .build();
         return switch (type) {
@@ -73,31 +73,31 @@ public class DtoTestHelper {
         };
     }
 
-    private static ListConstraintV1DTO getRandomListConstraint(FieldType type) {
-        return ListConstraintV1DTO.builder()
+    private static ListConstraintDTO getRandomListConstraint(FieldType type) {
+        return ListConstraintDTO.builder()
                 .minSize(random.nextInt(1, 10))
                 .maxSize(random.nextInt(10, 100))
                 .possibleValues(List.of(getRandomValue(type)))
                 .build();
     }
 
-    private static DateConstraintV1DTO getRandomDateConstraint() {
+    private static DateConstraintDTO getRandomDateConstraint() {
         var start = LocalDate.now();
-        return DateConstraintV1DTO.builder()
+        return DateConstraintDTO.builder()
                 .after(start)
                 .before(start.plusDays(30))
                 .build();
     }
 
-    private static NumberConstraintV1DTO getRandomNumberConstraint() {
-        return NumberConstraintV1DTO.builder()
+    private static NumberConstraintDTO getRandomNumberConstraint() {
+        return NumberConstraintDTO.builder()
                 .minValue(1d)
                 .maxValue(99d)
                 .build();
     }
 
-    private static SizeConstraintV1DTO getRandomSizeConstraint() {
-        return SizeConstraintV1DTO.builder()
+    private static SizeConstraintDTO getRandomSizeConstraint() {
+        return SizeConstraintDTO.builder()
                 .minSize(random.nextInt(1, 10))
                 .maxSize(random.nextInt(10, 99))
                 .build();

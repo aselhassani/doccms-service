@@ -1,6 +1,6 @@
-package com.doccms.adapter.ws.admin.v1.exception;
+package com.doccms.adapter.ws.admin.exception;
 
-import com.doccms.adapter.ws.admin.v1.dto.ErrorDTO;
+import com.doccms.adapter.ws.admin.dto.ErrorDTO;
 import jakarta.validation.ConstraintViolationException;
 import jakarta.validation.Path;
 import lombok.extern.log4j.Log4j2;

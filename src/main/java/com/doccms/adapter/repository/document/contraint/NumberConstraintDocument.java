@@ -1,6 +1,6 @@
 package com.doccms.adapter.repository.document.contraint;
 
-import com.doccms.domain.model.contraint.NumberConstraint;
+import com.doccms.domain.model.constraint.NumberConstraint;
 import lombok.Builder;
 
 @Builder

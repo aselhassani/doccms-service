@@ -1,12 +1,11 @@
-package com.doccms.adapter.ws.admin.v1;
+package com.doccms.adapter.ws.admin;
 
-import com.doccms.adapter.ws.admin.v1.dto.FieldV1DTO;
-import com.doccms.adapter.ws.admin.v1.dto.SchemaRQV1DTO;
-import com.doccms.adapter.ws.admin.v1.dto.SchemaRSV1DTO;
-import com.doccms.adapter.ws.admin.v1.exception.InvalidConstraintsException;
-import com.doccms.adapter.ws.admin.v1.exception.InvalidFieldValueException;
-import com.doccms.adapter.ws.admin.v1.exception.SchemaNameExistsException;
-import com.doccms.adapter.ws.admin.v1.exception.SchemaValidator;
+import com.doccms.adapter.ws.admin.dto.FieldDTO;
+import com.doccms.adapter.ws.admin.dto.SchemaDTO;
+import com.doccms.adapter.ws.admin.exception.InvalidConstraintsException;
+import com.doccms.adapter.ws.admin.exception.InvalidFieldValueException;
+import com.doccms.adapter.ws.admin.exception.SchemaNameExistsException;
+import com.doccms.adapter.ws.admin.exception.SchemaValidator;
 import com.doccms.domain.service.SchemaService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -25,33 +24,33 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/schemas")
 @RequiredArgsConstructor
-public class SchemaControllerV1 {
+public class SchemaController {
 
     private final SchemaService schemaService;
 
     private final SchemaValidator schemaValidator;
 
     @PostMapping
-    public ResponseEntity<SchemaRSV1DTO> createSchema(
-            @RequestBody @Valid @NotNull SchemaRQV1DTO schemaRQV1DTO) {
+    public ResponseEntity<SchemaDTO> createSchema(
+            @RequestBody @Valid @NotNull SchemaDTO schemaRQV1DTO) {
 
         validateCreation(schemaRQV1DTO);
 
         return Optional.of(schemaRQV1DTO)
-                .map(SchemaRQV1DTO::toDomain)
+                .map(SchemaDTO::toDomain)
                 .map(schemaService::save)
-                .map(SchemaRSV1DTO::fromDomain)
+                .map(SchemaDTO::fromDomain)
                 .map(ResponseEntity::ok)
                 .orElse(null);
     }
 
-    void validateCreation(SchemaRQV1DTO schemaRQV1DTO) {
+    void validateCreation(SchemaDTO schemaRQV1DTO) {
         fieldsDefaultValuesAreValid(schemaRQV1DTO.fields());
         fieldsConstraintsAreValid(schemaRQV1DTO.fields());
         schemaNameNotDoesNotExist(schemaRQV1DTO.name());
     }
 
-    private void fieldsConstraintsAreValid(List<FieldV1DTO> fields) {
+    private void fieldsConstraintsAreValid(List<FieldDTO> fields) {
         fields.stream()
                 .filter(f -> !schemaValidator.validateConstraints(f.constraints(), f.type(), f.mode()))
                 .forEach(f -> {
@@ -59,7 +58,7 @@ public class SchemaControllerV1 {
                 });
     }
 
-    private void fieldsDefaultValuesAreValid(List<FieldV1DTO> fields) {
+    private void fieldsDefaultValuesAreValid(List<FieldDTO> fields) {
         fields.stream()
                 .filter(f -> !schemaValidator.validateFieldValue(f.defaultValue(), f.type(), f.mode()))
                 .forEach(f -> {

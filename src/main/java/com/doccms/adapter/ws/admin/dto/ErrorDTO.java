@@ -1,4 +1,4 @@
-package com.doccms.adapter.ws.admin.v1.dto;
+package com.doccms.adapter.ws.admin.dto;
 
 import lombok.Builder;
 
