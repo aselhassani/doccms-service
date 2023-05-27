@@ -2,7 +2,7 @@ package com.doccms.adapter.repository.document;
 
 import java.util.Optional;
 
-import com.doccms.adapter.repository.document.contraint.ConstraintsDocument;
+import com.doccms.adapter.repository.document.constraint.ConstraintsDocument;
 import com.doccms.adapter.repository.document.enums.FieldMode;
 import com.doccms.adapter.repository.document.enums.FieldType;
 import com.doccms.domain.model.Field;

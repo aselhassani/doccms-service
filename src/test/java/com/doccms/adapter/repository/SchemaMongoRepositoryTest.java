@@ -5,6 +5,8 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.Optional;
+
 import com.doccms.adapter.repository.document.SchemaDocument;
 import com.doccms.domain.model.Schema;
 import com.doccms.helpers.DocumentTestHelper;
@@ -19,7 +21,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-public class SchemaMongoRepositoryTest {
+class SchemaMongoRepositoryTest {
 
     private final String SCHEMA_SEQ_NAME = "SCHEMA_SEQ";
     @InjectMocks
@@ -31,10 +33,13 @@ public class SchemaMongoRepositoryTest {
     private Schema schema;
     private SchemaDocument schemaDocument;
 
+    private String schemaName;
+
     @BeforeEach
     void setup() {
-        schema = DomainTestHelper.getRandomSchema();
-        schemaDocument = DocumentTestHelper.getRandomSchemaDocument();
+        schemaName = TestHelper.getRandomId("sch");
+        schema = DomainTestHelper.getRandomSchema(schemaName);
+        schemaDocument = DocumentTestHelper.getRandomSchemaDocument(schemaName);
     }
 
     @Test
@@ -53,9 +58,33 @@ public class SchemaMongoRepositoryTest {
         verify(schemaDocumentMongoRepository).save(captor.capture());
 
         var iSchemaDocument = captor.getValue();
-        
+
         assertThat(iSchemaDocument.id()).isEqualTo(schemaId);
         assertThat(iSchemaDocument).usingRecursiveComparison().ignoringFields("id").isEqualTo(schema);
         assertThat(result).usingRecursiveComparison().isEqualTo(schemaDocument);
+    }
+
+    @Test
+    void findByNameShouldRetrieveSchemaByName() {
+
+        when(schemaDocumentMongoRepository.findByName(any())).thenReturn(Optional.of(schemaDocument));
+
+        var result = underTest.findByName(schemaName);
+
+        verify(schemaDocumentMongoRepository).findByName(schemaName);
+
+        assertThat(result).usingRecursiveComparison().isEqualTo(Optional.of(schemaDocument));
+    }
+
+    @Test
+    void findByNameShouldReturnEmptyIfNoSchemaWasFound() {
+
+        when(schemaDocumentMongoRepository.findByName(any())).thenReturn(Optional.empty());
+
+        var result = underTest.findByName(schemaName);
+
+        verify(schemaDocumentMongoRepository).findByName(schemaName);
+
+        assertThat(result).isEmpty();
     }
 }

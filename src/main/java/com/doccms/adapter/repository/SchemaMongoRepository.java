@@ -27,4 +27,10 @@ public class SchemaMongoRepository implements SchemaRepository {
                        .map(SchemaDocument::toDomain)
                        .orElse(null);
     }
+
+    @Override
+    public Optional<Schema> findByName(String name) {
+        return schemaDocumentMongoRepository.findByName(name)
+                                            .map(SchemaDocument::toDomain);
+    }
 }

@@ -5,9 +5,12 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.Optional;
+
 import com.doccms.domain.model.Schema;
 import com.doccms.domain.service.SchemaService;
 import com.doccms.helpers.DomainTestHelper;
+import com.doccms.helpers.TestHelper;
 import com.doccms.port.repository.SchemaRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -17,7 +20,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 @ExtendWith(MockitoExtension.class)
-public class SchemaServiceTest {
+class SchemaServiceTest {
 
 
     @InjectMocks
@@ -28,9 +31,12 @@ public class SchemaServiceTest {
 
     private Schema schema;
 
+    private String schemaName;
+
     @BeforeEach
     void setup() {
-        schema = DomainTestHelper.getRandomSchema();
+        schemaName = TestHelper.getRandomId("sch");
+        schema = DomainTestHelper.getRandomSchema(schemaName);
     }
 
     @Test
@@ -43,6 +49,18 @@ public class SchemaServiceTest {
         verify(schemaRepository).save(schema);
 
         assertThat(result).isEqualTo(schema);
+    }
+
+    @Test
+    void findByNameShouldRetrieveSchemaByName() {
+
+        when(schemaRepository.findByName(any())).thenReturn(Optional.of(schema));
+
+        var result = underTest.findByName(schemaName);
+
+        verify(schemaRepository).findByName(schemaName);
+
+        assertThat(result).contains(schema);
     }
 
 

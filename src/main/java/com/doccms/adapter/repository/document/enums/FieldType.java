@@ -7,5 +7,6 @@ public enum FieldType {
     FLOAT,
     INTEGER,
     LONG,
-    STRING
+    STRING,
+    DATE
 }

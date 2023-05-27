@@ -12,11 +12,11 @@ import java.util.Random;
 
 import com.doccms.domain.model.Field;
 import com.doccms.domain.model.Schema;
-import com.doccms.domain.model.contraint.Constraints;
-import com.doccms.domain.model.contraint.DateConstraint;
-import com.doccms.domain.model.contraint.ListConstraint;
-import com.doccms.domain.model.contraint.NumberConstraint;
-import com.doccms.domain.model.contraint.SizeConstraint;
+import com.doccms.domain.model.constraint.Constraints;
+import com.doccms.domain.model.constraint.DateConstraint;
+import com.doccms.domain.model.constraint.ListConstraint;
+import com.doccms.domain.model.constraint.NumberConstraint;
+import com.doccms.domain.model.constraint.SizeConstraint;
 import com.doccms.domain.model.enums.FieldMode;
 import com.doccms.domain.model.enums.FieldType;
 
@@ -25,9 +25,13 @@ public class DomainTestHelper {
     private static final Random random = new SecureRandom();
 
     public static Schema getRandomSchema() {
+        return getRandomSchema(getRandomId("sch"));
+    }
+
+    public static Schema getRandomSchema(String name) {
         return Schema.builder()
                      .id(getRandomId())
-                     .name(getRandomId("sch"))
+                     .name(name)
                      .description(getRandomText(20))
                      .fields(List.of(getRandomField()))
                      .build();

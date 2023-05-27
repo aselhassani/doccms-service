@@ -1,4 +1,4 @@
-package com.doccms.adapter.ws.dto.enums;
+package com.doccms.adapter.ws.admin.v1.dto.enums;
 
 public enum FieldType {
     BOOLEAN,
@@ -6,5 +6,6 @@ public enum FieldType {
     FLOAT,
     INTEGER,
     LONG,
-    STRING
+    STRING,
+    DATE
 }
