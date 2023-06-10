@@ -1,4 +1,4 @@
-package com.doccms.adapter.ws.admin.exception;
+package com.doccms.adapter.ws;
 
 import com.doccms.adapter.ws.admin.dto.enums.FieldMode;
 import com.doccms.adapter.ws.admin.dto.ConstraintsDTO;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class SchemaValidator {
+public class FieldValidator {
 
     public boolean validateFieldValue(Object value, FieldType type, FieldMode mode) {
         if (value == null) return true;
@@ -21,12 +21,7 @@ public class SchemaValidator {
     private boolean validateSingleValue(Object value, FieldType type) {
         return switch (type) {
             case BOOLEAN -> validateBoolean(value);
-            case INTEGER -> false;
-            case LONG -> false;
-            case FLOAT -> false;
-            case DOUBLE -> false;
-            case DATE -> false;
-            case STRING -> false;
+            case INTEGER, LONG,DOUBLE, DATE, STRING, FLOAT  -> false;
         };
     }
 

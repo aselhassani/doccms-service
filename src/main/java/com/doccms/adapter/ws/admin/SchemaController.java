@@ -1,11 +1,11 @@
 package com.doccms.adapter.ws.admin;
 
+import com.doccms.adapter.ws.FieldValidator;
 import com.doccms.adapter.ws.admin.dto.FieldDTO;
 import com.doccms.adapter.ws.admin.dto.SchemaDTO;
 import com.doccms.adapter.ws.admin.exception.InvalidConstraintsException;
 import com.doccms.adapter.ws.admin.exception.InvalidFieldValueException;
 import com.doccms.adapter.ws.admin.exception.SchemaNameExistsException;
-import com.doccms.adapter.ws.admin.exception.SchemaValidator;
 import com.doccms.domain.service.SchemaService;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -28,7 +28,7 @@ public class SchemaController {
 
     private final SchemaService schemaService;
 
-    private final SchemaValidator schemaValidator;
+    private final FieldValidator schemaValidator;
 
     @PostMapping
     public ResponseEntity<SchemaDTO> createSchema(

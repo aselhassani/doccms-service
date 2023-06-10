@@ -10,6 +10,7 @@ import lombok.Builder;
 @Builder
 public record Node (
         Long id,
+        String name,
         String parentId,
         String schemaName,
         String title,

@@ -1,8 +1,8 @@
-package com.doccms.adapter.repository;
+package com.doccms.ws;
 
 import com.doccms.adapter.ws.admin.dto.enums.FieldMode;
 import com.doccms.adapter.ws.admin.dto.enums.FieldType;
-import com.doccms.adapter.ws.admin.exception.SchemaValidator;
+import com.doccms.adapter.ws.FieldValidator;
 import com.doccms.helpers.TestHelper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -21,11 +21,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
 
 @ExtendWith(MockitoExtension.class)
-public class SchemaValidatorTest {
+public class FieldValidatorTest {
 
     private final Random random = new SecureRandom();
     @InjectMocks
-    private SchemaValidator underTest;
+    private FieldValidator underTest;
     private Integer integer;
     private Long aLong;
     private Float aFloat;
